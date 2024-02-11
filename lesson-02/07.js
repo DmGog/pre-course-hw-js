@@ -6,14 +6,16 @@ let passportMarried = {
         city: "Bobryisk"
     }
 };
+function clone(obj) {
+    let clonedObj = {}
 
-let passportMarriedCopy = JSON.parse(JSON.stringify(passportMarried))
-let passportEntries = Object.entries(passportMarriedCopy);
-let newEntries = [
-    ...passportEntries.slice(0, 2), ["married", true],
-    ...passportEntries.slice(2)
-];
-let passportMarried2 = Object.fromEntries(newEntries);
+    for (i in obj) clonedObj[i] = typeof obj[i] == "object" ? clone(obj[i]) : obj[i];
 
-console.log(passportMarried)
-console.log(passportMarried2)
+    return clonedObj
+}
+
+let passportMarried2 = clone(passportMarried);
+
+passportMarried2.married = true;
+console.log(passportMarried);
+console.log(passportMarried2);
