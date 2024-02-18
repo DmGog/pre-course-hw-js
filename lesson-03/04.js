@@ -60,5 +60,5 @@ const users = [
         address: '753 Cherry St'
     }
 ];
-const usersFilter  = users.filter(value => value.id %2 == 0);
+const usersFilter  = users.filter(value => value.id %2 === 0);
 console.log(usersFilter)
